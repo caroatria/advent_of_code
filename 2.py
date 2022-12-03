@@ -1,6 +1,6 @@
 #advent of code
 #december 2nd
-f = open("2_input_file_cp", "r")
+f = open("2_input_file", "r")
 content = f.readlines()
 
 score = 0
