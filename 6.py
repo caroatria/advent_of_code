@@ -1,18 +1,19 @@
 #advent of code
 #day 6
-
 f = open("6_input_file", "r") #read input file
-content = f.read()
-print("content:",content)
+content = list(f.read())
 
-id_code = ""
-for char in content:
-        if char not in id_code:
-            if len(id_code) == 4:
+def solution(needed_length):
+    for i in range(len(content)-needed_length):
+        solution_check = True
+        current_window = content[i:i+needed_length]
+        current_window.sort()
+        for cha_ind in range(len(current_window)-1):
+            if current_window[cha_ind] == current_window[cha_ind+1]:
+                solution_check = False
                 break
-            elif len(id_code)<4:
-                id_code += char
-        else:
-            id_code = ""
-print("code",id_code)
-print("solution part 1",content.index(id_code)+3)
+        if solution_check == True:
+            return(i+needed_length)
+
+print("part 1", solution(4))
+print("part 2", solution(14))
